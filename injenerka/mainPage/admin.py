@@ -1,7 +1,85 @@
 from django.contrib import admin
 from mainPage.models import Customer, Product, Cart, CartProduct, Order, ProductOrder, ImgProduct, Login, TableOrders, Rating
 from django.forms import ModelForm
+from import_export.admin import ImportExportModelAdmin
+from import_export import resources
 
+###############################
+# импорт/экспорт
+###############################
+
+class InlineCustomer(admin.TabularInline):
+    model = Customer
+class CustomerAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(Customer, CustomerAdmin)
+
+
+class InlineProduct(admin.TabularInline):
+    model = Product
+class ProductAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(Product, ProductAdmin)
+
+
+class InlineCart(admin.TabularInline):
+    model = Cart
+class CartAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(Cart, CartAdmin)
+
+
+class InlineCartProduct(admin.TabularInline):
+    model = CartProduct
+class CartProductAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(CartProduct, CartProductAdmin)
+
+
+class InlineOrder(admin.TabularInline):
+    model = Order
+class OrderAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(Order, OrderAdmin)
+
+
+class InlineProductOrder(admin.TabularInline):
+    model = ProductOrder
+class ProductOrderAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(ProductOrder, ProductOrderAdmin)
+
+
+class InlineImgProduct(admin.TabularInline):
+    model = ImgProduct
+class ImgProductAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(ImgProduct, ImgProductAdmin)
+
+
+class InlineLogin(admin.TabularInline):
+    model = Login
+class LoginAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(Login, LoginAdmin)
+
+
+class InlineTableOrders(admin.TabularInline):
+    model = TableOrders
+class TableOrdersAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(TableOrders, TableOrdersAdmin)
+
+
+class InlineRating(admin.TabularInline):
+    model = Rating
+class RatingAdmin(ImportExportModelAdmin):
+    pass
+admin.site.register(Rating, RatingAdmin)
+
+###############################
+# /импорт/экспорт
+###############################
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'description', 'category', 'price', 'img') # какие поля будут видны в списке
@@ -10,7 +88,6 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('title', 'description', 'category', 'price', ) # по каким параметрам можем фильтровать
 
-admin.site.register(Product, ProductAdmin)
 
 
 class CustomerAdmin(admin.ModelAdmin):
@@ -20,7 +97,6 @@ class CustomerAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('serName', 'name', 'email', 'tel', ) # по каким параметрам можем фильтровать
 
-admin.site.register(Customer, CustomerAdmin)
 
 
 class CartAdmin(admin.ModelAdmin):
@@ -30,7 +106,6 @@ class CartAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('customer', ) # по каким параметрам можем фильтровать
 
-admin.site.register(Cart, CartAdmin)
 
 
 class CartProductAdmin(admin.ModelAdmin):
@@ -40,7 +115,6 @@ class CartProductAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('user', ) # по каким параметрам можем фильтровать
 
-admin.site.register(CartProduct, CartProductAdmin)
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -50,7 +124,6 @@ class OrderAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('cart', 'owner', 'data') # по каким параметрам можем фильтровать
 
-admin.site.register(Order, OrderAdmin)
 
 
 class ProductOrderAdmin(admin.ModelAdmin):
@@ -60,7 +133,6 @@ class ProductOrderAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('product', 'order') # по каким параметрам можем фильтровать
 
-admin.site.register(ProductOrder, ProductOrderAdmin)
 
 
 class ImgProductAdmin(admin.ModelAdmin):
@@ -70,7 +142,6 @@ class ImgProductAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('product', 'url') # по каким параметрам можем фильтровать
 
-admin.site.register(ImgProduct, ImgProductAdmin)
 
 
 class LoginAdmin(admin.ModelAdmin):
@@ -80,7 +151,6 @@ class LoginAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('login', 'password', 'Avatar', 'customer') # по каким параметрам можем фильтровать
 
-admin.site.register(Login, LoginAdmin)
 
 
 class TableOrdersAdmin(admin.ModelAdmin):
@@ -90,7 +160,6 @@ class TableOrdersAdmin(admin.ModelAdmin):
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = () # по каким параметрам можем фильтровать
 
-admin.site.register(TableOrders, TableOrdersAdmin)
 
 
 class RatingAdmin(admin.ModelAdmin):
@@ -99,9 +168,3 @@ class RatingAdmin(admin.ModelAdmin):
     search_fields = ('id', 'product', 'customer', 'rating') # по каким полям будет производиться поиск
     list_editable = () # что мы можем изменять не входя, стоит ничего, это картеж
     list_filter = ('product', 'customer', 'rating') # по каким параметрам можем фильтровать
-
-admin.site.register(Rating, RatingAdmin)
-
-
-
-# from import_export.admin import ImportExportModelAdmin

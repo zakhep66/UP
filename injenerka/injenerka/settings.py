@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainPage.apps.MainpageConfig',
-    'rest_framework'
+    'rest_framework',
     # 'sait.apps.SaitConfig'
+    'import_export'
 ]
 
 MIDDLEWARE = [
