@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 's1xcvwhgjw=g*hg)gyt)hg$@8220k#+bdn2#g%t9rxabbw9d35'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mainPage.apps.MainpageConfig',
     'rest_framework',
-    # 'sait.apps.SaitConfig'
+    # 'lending.apps.LendingConfig',
     'import_export'
 ]
 
