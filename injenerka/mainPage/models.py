@@ -1,10 +1,24 @@
 from django.db import models
-from decimal import*
-from django.contrib.auth import get_user_model
+
+
+# from decimal import *
+# from django.contrib.auth import get_user_model
+
+
+class Moderator(models.Model):
+    login = models.CharField(max_length=20, verbose_name='логин модератора')
+    password = models.CharField(max_length=255, verbose_name='пароль, да я храню его в бд и что?')
+    photo = models.ImageField(blank=True, verbose_name='аватар')
+
+    class Meta:
+        verbose_name = 'Модератор'
+        verbose_name_plural = 'Модераторы'
+
+    def __str__(self):
+        return "Модератор: {}".format(self.login)
 
 
 class Customer(models.Model):
-
     serName = models.CharField(max_length=30, verbose_name='Фамилия клиента')
     name = models.CharField(max_length=30, verbose_name='Имя клиента')
     fathName = models.CharField(max_length=30, verbose_name='Отчество клиента', blank=True)
@@ -12,16 +26,14 @@ class Customer(models.Model):
     email = models.EmailField(max_length=100, verbose_name='Email')
 
     class Meta:
-
-        verbose_name = 'Customer'
-        verbose_name_plural = 'Customers'
+        verbose_name = 'Пользователь'
+        verbose_name_plural = 'Пользователи'
 
     def __str__(self):
         return "Покупатель: {} {}".format(self.serName, self.name)
-    
+
 
 class Product(models.Model):
-
     title = models.CharField(max_length=100, verbose_name='Название продукта')
     description = models.TextField(verbose_name='Описание продукта', null=True)
     category = models.CharField(max_length=50, verbose_name='Категория продукта', default='product')
@@ -36,9 +48,7 @@ class Product(models.Model):
         return self.title
 
 
-
 class CartProduct(models.Model):
-
     product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
     user = models.ForeignKey(Customer, verbose_name="Покупатель", on_delete=models.CASCADE, null=True)
     qty = models.PositiveIntegerField(default=0, verbose_name="Количество")
@@ -50,16 +60,13 @@ class CartProduct(models.Model):
 
 
 class Cart(models.Model):
-
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
     def __str__(self):
         return '{}'.format(self.customer)
 
 
-
 class Order(models.Model):
-
     cart = models.ForeignKey(Cart, verbose_name=("Корзина"), on_delete=models.CASCADE)
     owner = models.ForeignKey(Customer, verbose_name="Владелец", on_delete=models.CASCADE, default=1)
     data = models.DateField("Дата", auto_now=True)
@@ -70,13 +77,12 @@ class Order(models.Model):
 
     def __str__(self):
         return self.owner
-    
 
 
 class ProductOrder(models.Model):
-
     product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
     order = models.ForeignKey(Order, verbose_name="Заказ", on_delete=models.CASCADE)
+
     # owner = models.ForeignKey(Customer, verbose_name="Владелец карзины", on_delete=models.CASCADE)
 
     def __str__(self):

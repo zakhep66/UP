@@ -1,12 +1,13 @@
 from django.contrib import admin
-from mainPage.models import Customer, Product, Cart, CartProduct, Order, ProductOrder, ImgProduct, Login, TableOrders, Rating
-from django.forms import ModelForm
 from import_export.admin import ImportExportModelAdmin
-from import_export import resources
+from .models import Customer, Product, Cart, CartProduct, Order, ProductOrder, ImgProduct, Login, TableOrders, \
+    Rating, Moderator
+
 
 ###############################
 # импорт/экспорт
 ###############################
+
 
 class InlineCustomer(admin.TabularInline):
     model = Customer
@@ -52,6 +53,8 @@ admin.site.register(ProductOrder, ProductOrderAdmin)
 
 class InlineImgProduct(admin.TabularInline):
     model = ImgProduct
+
+
 class ImgProductAdmin(ImportExportModelAdmin):
     pass
 admin.site.register(ImgProduct, ImgProductAdmin)
@@ -76,6 +79,9 @@ class InlineRating(admin.TabularInline):
 class RatingAdmin(ImportExportModelAdmin):
     pass
 admin.site.register(Rating, RatingAdmin)
+
+
+admin.site.register(Moderator)
 
 ###############################
 # /импорт/экспорт

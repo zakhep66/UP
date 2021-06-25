@@ -1,6 +1,9 @@
-from .models import Customer, Cart, CartProduct, Product, Order, ProductOrder, ImgProduct, Login, TableOrders, Rating
+from .models import Customer, Cart, CartProduct, Product, Order, ProductOrder, ImgProduct, Login, TableOrders, Rating, \
+    Moderator
 from rest_framework import viewsets, permissions
-from .serializers import CustomerSerializer, CartSerializer, CartProductSerializer, ProductSerializer, OrderSerializer, ProductOrderSerializer, ImgProductSerializer, LoginSerializer, TableOrdersSerializer, RatingSerializer
+from .serializers import CustomerSerializer, CartSerializer, CartProductSerializer, ProductSerializer, OrderSerializer, \
+    ProductOrderSerializer, ImgProductSerializer, LoginSerializer, TableOrdersSerializer, RatingSerializer, \
+    ModeratorSerializer
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -81,3 +84,11 @@ class RatingViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = RatingSerializer
+
+
+class ModeratorViewSet(viewsets.ModelViewSet):
+    queryset = Moderator.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = ModeratorSerializer
