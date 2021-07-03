@@ -67,9 +67,9 @@ class Cart(models.Model):
 
 
 class Order(models.Model):
-    cart = models.ForeignKey(Cart, verbose_name=("Корзина"), on_delete=models.CASCADE)
-    owner = models.ForeignKey(Customer, verbose_name="Владелец", on_delete=models.CASCADE, default=1)
-    data = models.DateField("Дата", auto_now=True)
+    cart = models.ForeignKey('Cart', verbose_name="Корзина", on_delete=models.CASCADE)
+    owner = models.ForeignKey('Customer', verbose_name="Владелец", on_delete=models.CASCADE)
+    data = models.DateField(auto_now=True, verbose_name="Дата")
 
     class Meta:
         verbose_name = 'Order'
@@ -80,13 +80,13 @@ class Order(models.Model):
 
 
 class ProductOrder(models.Model):
-    product = models.ForeignKey(Product, verbose_name="Продукт", on_delete=models.CASCADE)
+    product = models.ForeignKey('Product', verbose_name="Продукт", on_delete=models.CASCADE)
     order = models.ForeignKey(Order, verbose_name="Заказ", on_delete=models.CASCADE)
 
     # owner = models.ForeignKey(Customer, verbose_name="Владелец карзины", on_delete=models.CASCADE)
 
     def __str__(self):
-        return '{}'.format(self.product)
+        return self.product
 
 
 class ImgProduct(models.Model):
@@ -128,4 +128,4 @@ class Rating(models.Model):
     rating = models.TextField(("Коментарий"))
 
     def __str__(self):
-        return 'Коментарий клиента'.format(self.product.title)
+        return "Коментарий  пользователя: {} для продукта: {}".format(self.customer.name, self.product.title)

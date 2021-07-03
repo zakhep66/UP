@@ -1,4 +1,4 @@
-from django.contrib import admin
+from baton.autodiscover import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -6,9 +6,10 @@ from django.conf.urls.static import static
 from mainPage.views import index
 
 urlpatterns = [
-    path('', admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('baton/', include('baton.urls')),
     path('test/', include('mainPage.urls')),
-    path('index/', index),
+    path('home/', index, name='home'),
 ] 
 
 
