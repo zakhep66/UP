@@ -33,7 +33,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'baton'
+    'grappelli',
+    # 'baton'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'mainPage.apps.MainpageConfig',
     'rest_framework',
     'import_export',
-    'baton.autodiscover',
+    # 'baton.autodiscover',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,6 @@ MEDIA_URL = '/media_root/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+
+LOGIN_REDIRECT_URL = '/'
+# LOGOUT_REDIRECT_URL = '/test'

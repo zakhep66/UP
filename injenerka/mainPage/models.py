@@ -41,8 +41,8 @@ class Product(models.Model):
     img = models.ImageField(verbose_name="Картинка", null=True)
 
     class Meta:
-        verbose_name = 'Product'
-        verbose_name_plural = 'Products'
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
 
     def __str__(self):
         return self.title
@@ -55,12 +55,20 @@ class CartProduct(models.Model):
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name="Общая цена", default=0)
     product = models.ManyToManyField('Cart', blank=True, related_name="related_cart")
 
+    class Meta:
+        verbose_name = 'Связная таблица корзины и продукта'
+        verbose_name_plural = 'Связная таблица корзины и продукта'
+
     def __str__(self):
         return '{}'.format(self.user)
 
 
 class Cart(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Корзина'
+        verbose_name_plural = 'Корзины'
 
     def __str__(self):
         return '{}'.format(self.customer)
@@ -72,8 +80,8 @@ class Order(models.Model):
     data = models.DateField(auto_now=True, verbose_name="Дата")
 
     class Meta:
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'
+        verbose_name = 'Владелец'
+        verbose_name_plural = 'Владельцы'
 
     def __str__(self):
         return self.owner
@@ -85,6 +93,10 @@ class ProductOrder(models.Model):
 
     # owner = models.ForeignKey(Customer, verbose_name="Владелец карзины", on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name = 'Связная таблица продукта и владельца'
+        verbose_name_plural = 'Связная таблица продукта и владельца'
+
     def __str__(self):
         return self.product
 
@@ -94,8 +106,8 @@ class ImgProduct(models.Model):
     url = models.ImageField("Ссылка на картинку", null=True)
 
     class Meta:
-        verbose_name = 'ImgProduct'
-        verbose_name_plural = 'ImgProducts'
+        verbose_name = 'Связная таблица картинок и продуктов'
+        verbose_name_plural = 'Связная таблица картинок и продуктов'
 
     def __str__(self):
         return 'Картинка для продукта: {}'.format(self.product.title)
@@ -108,8 +120,8 @@ class Login(models.Model):
     customer = models.ForeignKey("Customer", verbose_name=("Клиент"), on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name = 'Login'
-        verbose_name_plural = 'Logins'
+        verbose_name = 'Логин'
+        verbose_name_plural = 'Логины'
 
     def __str__(self):
         return self.customer.name
@@ -117,6 +129,10 @@ class Login(models.Model):
 
 class TableOrders(models.Model):
     customer = models.ForeignKey(Customer, verbose_name="Клиент", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Таблица владельцев'
+        verbose_name_plural = 'Таблицы владельцев'
 
     def __str__(self):
         return 'Таблица заказов {}'.format(self.customer.name)
@@ -126,6 +142,10 @@ class Rating(models.Model):
     product = models.ForeignKey("Product", verbose_name=("Продукт"), on_delete=models.CASCADE)
     customer = models.ForeignKey("Customer", verbose_name=("Клиент"), on_delete=models.CASCADE)
     rating = models.TextField(("Коментарий"))
+
+    class Meta:
+        verbose_name = 'Рейтинг'
+        verbose_name_plural = 'Рейтинги'
 
     def __str__(self):
         return "Коментарий  пользователя: {} для продукта: {}".format(self.customer.name, self.product.title)

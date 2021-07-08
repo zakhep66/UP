@@ -12,8 +12,19 @@
 <!--    Header-->
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Active</a>
+    <a class="nav-link" aria-current="page" href="{% url 'home' %}">Домашняя</a>
   </li>
+   {% if request.user.is_authenticated and request.user.is_staff %}
+        <li>
+            <a class="nav-link" aria-current="page" href="/admin">Админ панель</a>
+        </li>
+        <li>
+            <a class="nav-link" aria-current="page" href="/api">Апи с базе данных</a>
+        </li>
+    {% endif %}
+    <li>
+        <a class="nav-link" aria-current="page" href="/accounts/logout/">Выйти</a>
+    </li>
 </ul>
 <!--/Header-->
 </body>
