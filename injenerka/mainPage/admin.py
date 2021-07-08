@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from import_export.admin import ImportExportModelAdmin
 from .models import Customer, Product, Cart, CartProduct, Order, ProductOrder, ImgProduct, Login, TableOrders, \
-    Rating, Moderator
+    Rating
 
 
 @admin.register(Customer)
@@ -130,7 +130,7 @@ class RatingAdmin(ImportExportModelAdmin):
 
 admin.site.register(Rating, RatingAdmin)
 
-admin.site.register(Moderator)
+
 
 
 ###############################

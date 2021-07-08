@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from .models import Customer, Cart, CartProduct, Product, Order, ProductOrder, ImgProduct, Login, TableOrders, Rating, \
-    Moderator
+from .models import Customer, Cart, CartProduct, Product, Order, ProductOrder, ImgProduct, Login, TableOrders, Rating
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -60,10 +59,4 @@ class TableOrdersSerializer(serializers.ModelSerializer):
 class RatingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rating
-        fields = '__all__'
-
-
-class ModeratorSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Moderator
         fields = '__all__'

@@ -1,9 +1,9 @@
+from django.urls import path
 from rest_framework import routers
 
 from .api import CustomerViewSet, CartViewSet, CartProductViewSet, ProductViewSet, OrderViewSet, ProductOrderViewSet, \
-    ImgProductViewSet, LoginViewSet, TableOrdersViewSet, RatingViewSet, ModeratorViewSet
+    ImgProductViewSet, LoginViewSet, TableOrdersViewSet, RatingViewSet
 
-from . import views
 
 router = routers.DefaultRouter()  # роутер по умолчанию
 
@@ -17,7 +17,8 @@ router.register('api/imgproduct', ImgProductViewSet, 'imgproduct')
 router.register('api/login', LoginViewSet, 'login')
 router.register('api/tableorders', TableOrdersViewSet, 'tableorders')
 router.register('api/rating', RatingViewSet, 'rating')
-router.register('api/moderator', ModeratorViewSet, 'moderator')
+
+
+
 
 urlpatterns = router.urls
-

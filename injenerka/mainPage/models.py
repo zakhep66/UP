@@ -5,19 +5,6 @@ from django.db import models
 # from django.contrib.auth import get_user_model
 
 
-class Moderator(models.Model):
-    login = models.CharField(max_length=20, verbose_name='логин модератора')
-    password = models.CharField(max_length=255, verbose_name='пароль, да я храню его в бд и что?')
-    photo = models.ImageField(blank=True, verbose_name='аватар')
-
-    class Meta:
-        verbose_name = 'Модератор'
-        verbose_name_plural = 'Модераторы'
-
-    def __str__(self):
-        return "Модератор: {}".format(self.login)
-
-
 class Customer(models.Model):
     serName = models.CharField(max_length=30, verbose_name='Фамилия клиента')
     name = models.CharField(max_length=30, verbose_name='Имя клиента')
