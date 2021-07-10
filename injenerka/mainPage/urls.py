@@ -1,9 +1,7 @@
-from django.urls import path
 from rest_framework import routers
 
 from .api import CustomerViewSet, CartViewSet, CartProductViewSet, ProductViewSet, OrderViewSet, ProductOrderViewSet, \
     ImgProductViewSet, LoginViewSet, TableOrdersViewSet, RatingViewSet
-
 
 router = routers.DefaultRouter()  # роутер по умолчанию
 

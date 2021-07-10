@@ -1,19 +1,21 @@
-# from baton.autodiscover import admin
-
-
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from mainPage.views import index
+from mainPage import views
+
+# from mainPage.views import customer_list, customer_detail
 
 urlpatterns = [
     # path('baton/', include('baton.urls')),
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('api/', include('mainPage.urls')),
-    path('', index, name='home'),
+    path('', views.index, name='home'),
+    path('lending', views.lending, name='lending'),
+
+    # path('user-detail/<int:pk>', customer_detail),
 ]
 
 
