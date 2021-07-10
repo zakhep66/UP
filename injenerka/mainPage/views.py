@@ -12,8 +12,18 @@ def index(request):
 	return render(request, 'index.html')
 
 
+def home(request):
+	return render(request, 'home.html')
+
+
 def lending(request):
-	return render(request, 'lending.html')
+	context = {
+		'first_name': request.user.first_name,
+		'last_name': request.user.last_name,
+		'date_joined': request.user.date_joined,
+		'email': request.user.email,
+	}
+	return render(request, 'lending.html', context)
 
 
 #######################################

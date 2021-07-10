@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/', include('mainPage.urls')),
     path('', views.index, name='home'),
     path('lending', views.lending, name='lending'),
+    path('home', views.home, name='home'),
 
     # path('user-detail/<int:pk>', customer_detail),
 ]

@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Vira | Home</title>
+        <title>Лендинг</title>
         <link rel="shortcut icon" type="image/x-icon" href="{% static 'static/lending/images/1.jpg' %}"/>
 
         <link type="text/css" href="{% static 'lending/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -23,13 +23,13 @@
         <div id="menu-item" class="menu-item hide-menu">
             <div class="container">
                 <ul>
-                    <a href="index.html"><li>Главная</li></a>
+                    <a href="{% url 'home' %}"><li>Главная</li></a>
                     <a href="#about"><li>О проекте</li></a>
                     <a href="#expertise"><li>Проблемы</li></a>
                     <a href="#workstation"><li>Результаты</li></a>
                     <a href="#team"><li>Моя команда</li></a>
                     <a href="#contact"><li>Полезные ссылочки</li></a>
-                    <a href="index.html"><li>Главная</li></a>
+                    <a href="{% url 'lending' %}"><li>Главная</li></a>
                 </ul>
             </div>
         </div>
@@ -41,7 +41,7 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/images/dj.png" alt="logo" class="logo-img"></a>
+                                        <a href="{% url 'lending' %}"><img src="{% static 'lending/images/dj.png' %}" alt="logo" class="logo-img"></a>
                                     </div>
                                 </div>
                                 <div class="col-xs-6 text-right">
@@ -58,7 +58,7 @@
                         <div class="intro-box">
                             <div class="intro">
                                 <h1>Суровицкий Михаил 191-321</h1>
-                                <p>Интернет-магазин по продаже электроники</p>
+                                <p>Интернет-магазин электроники</p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="col-sm-8 col-sm-offset-2">
                             <h2 class="title">О проекте</h2>
                             <p>
-                                Ваще не ебу че о проекте писать 
+                                Весенний проект для дисциплины "Проектная деятельность"
                             </p>
                         </div>
                     </div>
@@ -114,13 +114,13 @@
                             <div class="vira-card">
                                 <div class="vira-card-header">
                                     <div class="card-icon">
-                                        <span class="fa fa-bicycle" aria-hidden="true"></span>
+                                        <span class="fa fa-calendar" aria-hidden="true"></span>
                                     </div>
                                 </div>
                                 <div class="vira-card-content">
-                                    <h3>HTML&CSS</h3>
+                                    <h3>rest-framework</h3>
                                     <p>
-                                        Это язык разметки, используемый для визуального оформления веб-сайтов. Объекты, расположенные на странице, размещаются с помощью HTML.
+                                        Это лёгкий фреймворк для Django, поддерживающий идеологию REST, репрезентативную передачу состояния.
                                     </p>
                                 </div>
                             </div>
@@ -139,12 +139,12 @@
                             <div id="expert-slider" class="owl-carousel">
                                 <div class="item">
                                     <p>
-                                        Сюда проблема
+                                        Нужен личный кабинет
                                     </p>
                                 </div>
                                 <div class="item">
                                     <p>
-                                        И сюда проблема
+                                        Нужен интерфейс для БД
                                     </p>
                                 </div>
                             </div>
@@ -159,12 +159,12 @@
                         <div class="item">
                             <div class="vira-card">
                                 <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/4.jpg">
+                                    <img class="img-responsive" src="{% static 'lending/images/api.png' %}">
                                 </div>
                                 <div class="vira-card-content">
                                     <h3>1</h3>
                                     <p>
-                                        Описание
+                                        Реализовано API
                                     </p>
                                 </div>
                             </div>
@@ -172,12 +172,12 @@
                         <div class="item">
                             <div class="vira-card">
                                 <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/4.jpg">
+                                    <img class="img-responsive" src="{% static 'lending/images/models.png' %}">
                                 </div>
                                 <div class="vira-card-content">
                                     <h3>2</h3>
                                     <p>
-                                        Описание
+                                        Есть 10 таблиц с нетесовыми данными
                                     </p>
                                 </div>
                             </div>
@@ -185,12 +185,12 @@
                         <div class="item">
                             <div class="vira-card">
                                 <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/4.jpg">
+                                    <img class="img-responsive" src="{% static 'lending/images/lending.png' %}">
                                 </div>
                                 <div class="vira-card-content">
                                     <h3>3</h3>
                                     <p>
-                                        Описание
+                                        Лендинг проекта
                                     </p>
                                 </div>
                             </div>
@@ -198,55 +198,16 @@
                         <div class="item">
                             <div class="vira-card">
                                 <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/4.jpg">
+                                    <img class="img-responsive" src="{% static 'lending/images/lk.png' %}">
                                 </div>
                                 <div class="vira-card-content">
                                     <h3>4</h3>
                                     <p>
-                                        Описание
+                                        Личный кабинет
                                     </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="vira-card">
-                                <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/4.jpg">
-                                </div>
-                                <div class="vira-card-content">
-                                    <h3>5</h3>
-                                    <p>
-                                        Описание
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="vira-card">
-                                <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/4.jpg">
-                                </div>
-                                <div class="vira-card-content">
-                                    <h3>6</h3>
-                                    <p>
-                                        Описание
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="watch bg-img">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <span>Видео о проекте</span>
-                            <a class="popup-youtube btn" href=""><span class="fa fa-play"></span></a>
-                            <span>сделано</span>
-                        </div>
-                    </div>
-                </div>
             </section>
             <section id="team" class="team section">
                 <div class="container">
@@ -255,12 +216,12 @@
                         <div class="col-sm-8">
                             <div class="vira-card">
                                 <div class="vira-card-header">
-                                    <img class="img-responsive" src="assets/images/10.jpg">
+                                    <img class="img-responsive" src="{% static 'lending/images/i.jpg' %}">
                                 </div>
                                 <div class="vira-card-content">
                                     <h3>Суровцкий Михаил</h3>
                                     <p>
-                                        Привет, я Миша. На самом деле тоже ничего не знаю, спиздил проект с гита, ничего не переделывал, повезло, что он на русском и запустился 
+                                        Привет, меня зовут Михаил и это мой проект для предмета "проектная деятельность". Надеюсь, вам понравилось
                                     </p>
                                     <div class="social-icons">
                                     </div>
@@ -272,7 +233,7 @@
             </section>
             <section id="contact" class="contact section">
                 <div class="container">
-                    <h2 class="title">Полезные ссылочки</h2>
+                    <h2 class="title">Полезные ссылки</h2>
                     <div class="row">
                         <div class="col-sm-4">
                             <div class="vira-card">
@@ -282,7 +243,7 @@
                                 <div class="vira-card-content">
                                     <h3>Git</h3>
                                     <p>
-                                        <a href="">Проект на GitHub</a>
+                                        <a href="https://github.com/zakhep66/UP">Проект на GitHub</a>
                                     </p>
                                 </div>
                             </div>
@@ -306,9 +267,9 @@
                                     <i class="fab fa-google-drive"></i>
                                 </div>
                                 <div class="vira-card-content">
-                                    <h3>Google disk</h3>
+                                    <h3>Gmail</h3>
                                     <p>
-                                        <a href="">Google disk</a>
+                                        <a href="mailto:sur.mikhael@gmail.com">Gmail</a>
                                     </p>
                                 </div>
                             </div>
@@ -324,18 +285,18 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <p> Спасибо вам <span class="fa fa-heart"></span> от Михаила Суровицкого</p>
+                            <p>Проект для Московского Политеха</p>
                         </div>
                     </div>
                 </div>
             </footer>
         </div>
         <script src="https://kit.fontawesome.com/bae9ad7861.js" crossorigin="anonymous"></script>
-        <script src="lending/js/jquery-3.1.1.js"></script>
-        <script src="lending/js/bootstrap.min.js"></script>
-        <script src="lending/js/owl.carousel.min.js"></script>
+        <script src="{% static 'lending/js/jquery-3.1.1.js' %}"></script>
+        <script src="{% static 'lending/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'lending/js/owl.carousel.min.js' %}"></script>
         <script src="https://use.fontawesome.com/55b73bf748.js"></script>
-        <script src="lending/js/jquery.magnific-popup.js"></script>
-        <script src="lending/js/script.js"></script>
+        <script src="{% static 'lending/js/jquery.magnific-popup.js' %}"></script>
+        <script src="{% static 'lending/js/script.js' %}"></script>
     </body>
 </html>
