@@ -129,7 +129,7 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media_root/'
 
 STATICFILES_DIRS = [
-
+    'injenerka/mainPage/static'
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
